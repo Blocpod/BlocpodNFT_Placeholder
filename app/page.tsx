@@ -451,18 +451,6 @@ function BlockPodField({ phase, impulse, controls }: { phase: Phase; impulse: nu
       context.filter = "none";
       context.restore();
 
-      // The near-side ledger stream crosses the void and visually connects every block to BLOCPOD CREATIVE.
-      context.save();
-      context.globalCompositeOperation = "lighter";
-      context.filter = `blur(${Math.max(2, unit * 0.008)}px)`;
-      context.strokeStyle = `rgba(${palette[1]}, ${0.62 * intensity})`;
-      context.lineWidth = Math.max(4, unit * 0.018);
-      context.beginPath();
-      context.ellipse(cx, cy + core * 0.04, core * 1.55, core * 0.49, 0, 0.1, Math.PI - 0.1);
-      context.stroke();
-      context.filter = "none";
-      context.restore();
-
       context.save();
       context.globalCompositeOperation = "lighter";
       blocks.forEach((block) => {
