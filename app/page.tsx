@@ -233,7 +233,9 @@ function BlockPodField({ phase, impulse, controls }: { phase: Phase; impulse: nu
       fieldGlow.addColorStop(0.64, `rgba(${palette[2]}, ${0.052 * intensity})`);
       fieldGlow.addColorStop(1, "rgba(0,0,0,0)");
       context.fillStyle = fieldGlow;
-      context.fillRect(cx - disk * 1.15, cy - disk * 0.75, disk * 2.3, disk * 1.5);
+      // Paint through the viewport. Clipping this radial fade to a disk-sized
+      // rectangle exposes its horizontal bounds when the camera is zoomed.
+      context.fillRect(0, 0, width, height);
 
       // Information exits the orb, resolves into packets, then gravitates around
       // the upper lens before separating down either side of the NFT universe.
