@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? "http";
-  const metadataBase = new URL(`${protocol}://${host}`);
+export function generateMetadata(): Metadata {
+  const metadataBase = new URL("https://www.blocpod.io");
   const title = "BLOCPOD CREATIVE — The NFT Singularity";
   const description = "A living NFT universe where every block converges on BLOCPOD CREATIVE.";
 
